@@ -42,6 +42,16 @@ function flipCard(card) {
 
 function checkMatch() {
     let [card1, card2] = selectedCards;
+
+    if (card1 === card2) {
+        setTimeout(() => {
+            card1.textContent = '';
+            card1.dataset.flipped = 'false';
+            selectedCards = [];
+        }, 500);
+        return;
+    }
+
     if (card1.dataset.item === card2.dataset.item) {
         card1.classList.add('matched');
         card2.classList.add('matched');
@@ -62,7 +72,7 @@ function checkMatch() {
 }
 
 function startTimer() {
-    let timeLeft = 30;
+    let timeLeft = 45;
     document.getElementById('timer').textContent = timeLeft;
     timer = setInterval(() => {
         timeLeft--;
